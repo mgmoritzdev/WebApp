@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "MoveFiles";
+}
+
+@if (@ViewBag.Error != "")
+{
+    <br />
+    <div class="alert alert-danger">@ViewBag.Error</div>
+    <br />
+    @Html.ActionLink("Voltar", "Index", "MoveFiles", null, new { @class = "btn btn-primary" })
+}
+
+
+@if (@ViewBag.Success != "")
+{
+    <br />
+    <div class="alert alert-success">@ViewBag.Success</div>
+    @*<br />
+    @Html.ActionLink("Atualizar Banco de Dados", "Index", "GetDataFromFileSystem", null, new { @class = "btn btn-primary" })*@
+    <br />
+    @Html.ActionLink("Armazenar confirmação", "CheckMove", "MoveFiles", null, new { @class = "btn btn-primary" })
+}
+

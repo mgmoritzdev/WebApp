@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "CheckMove";
+}
+
+@if (!@ViewBag.originIsEmpty)
+{
+    <br />
+    <div class="alert alert-danger">A pasta de origem não está vazia. Houve algum problema.</div>
+    <br />
+}
+
+
+@if (!@ViewBag.targetIsUpdated)
+{
+    <br />
+    <div class="alert alert-danger">Algum arquivo no banco de dados não foi encontrado.</div>
+    <br />
+}
+
+@if (@ViewBag.targetIsUpdated && @ViewBag.originIsEmpty)
+{
+    <br />
+    <div class="alert alert-success">Confirmação armazenada com sucesso.</div>
+    <br />
+}
+
+@Html.ActionLink("Voltar", "Index", "MoveFiles", null, new { @class = "btn btn-primary" })

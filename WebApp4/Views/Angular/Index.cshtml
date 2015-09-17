@@ -1,0 +1,72 @@
+﻿<div class="container" ng-app="filesApp">
+    <div ng-controller="filesAppCtrl">
+        <h2>{{app}}</h2>
+        <button class="btn btn-primary btn-block"
+                ng-click="loadFiles('Angular/MyFilesJson')"
+                ng-disabled="contatoForm.$invalid">
+            Carregar Lista de Arquivos
+        </button>
+        
+        <br />
+
+        <table ng-show="files.length > 0" class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Diretório</th>
+                <th>Nome</th>
+                <th>Tamanho</th>
+            </tr>
+            <tr ng-repeat="file in files | orderBy:file.filename :false">
+                <td>{{file.id}}</td>
+                <td>{{file.dir}}</td>
+                <td>{{file.name}}</td>
+                <td>{{file.size}}</td>
+            </tr>
+        </table>
+        <br />
+        <button class="btn btn-primary btn-block"
+                ng-click="loadConfirmations('Angular/MyConfirmationsJson')"
+                ng-disabled="contatoForm.$invalid">
+            Carregar Lista de Confirmações de Movimentação
+        </button>
+        <br />
+        <table ng-show="confirmations.length > 0" class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Confirmação</th>
+                <th>Id do Arquivo</th>
+            </tr>
+            <tr ng-repeat="confirm in confirmations | orderBy:file.filename :false">
+                <td>{{confirm.id}}</td>
+                <td>{{confirm.confirmed}}</td>
+                <td>{{confirm.myFileId}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br />
+@Html.ActionLink("Mover Arquivos", "Index", "MoveFiles", null, new { @class = "btn btn-default btn-block" })
+
+@Scripts.Render("~/bundles/angular")
+<script>
+    angular.module("filesApp", []);
+    angular.module("filesApp").controller("filesAppCtrl", function ($scope, $http) {
+        $scope.app = "Files App";
+        $scope.files = [];
+        $scope.loadFiles = function (url) {
+            $http.get(url).success(function (data, status) {
+                $scope.files = data;
+            }).error(function (data, status) {
+                $scope.message = "Aconteceu um problema: " + data;
+            });
+        }
+        $scope.loadConfirmations = function (url) {
+            $http.get(url).success(function (data, status) {
+                $scope.confirmations = data;
+            }).error(function (data, status) {
+                $scope.message = "Aconteceu um problema: " + data;
+            });
+        }
+    });
+</script>

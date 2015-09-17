@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "GetFileList";
+}
+
+@if (@ViewBag.Error != "")
+{
+    <br />
+    <div class="alert alert-danger">@ViewBag.Error</div>
+    <br />
+    @Html.ActionLink("Voltar: ", "Index", "GetDataFromFileSystem", null, new { @class = "btn btn-primary" })
+}
+    
+      
+@if (@ViewBag.Success != "")
+{
+    <br />
+    <div class="alert alert-success">@ViewBag.Success</div>
+    <br />
+    @Html.ActionLink("Ver resultados usando AngularJS", "Index", "Angular", null, new { @class = "btn btn-primary" })
+}

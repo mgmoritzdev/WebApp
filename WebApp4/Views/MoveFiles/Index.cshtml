@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Move Files</h2>
+
+<p>
+    @Html.ActionLink("Select Origin Folder: " + (string)ViewBag.Preferences1.selectedFolder, "SelectOriginFolder", null, new { @class = "btn btn-default btn-block" })
+</p>
+<p>
+    @Html.ActionLink("Select Target Folder: " + (string)ViewBag.Preferences2.selectedFolder, "SelectTargetFolder", null, new { @class = "btn btn-default btn-block" })
+</p>
+<p>
+    @Html.ActionLink("Move Files from Origin to Target", "MoveFiles", null, new { @class = "btn btn-default btn-block" })
+</p>

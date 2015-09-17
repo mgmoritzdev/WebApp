@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Get Files From Filesystem</h2>
+
+<p>
+    @Html.ActionLink("Select Folder to Get File List: " + (string)ViewBag.Preferences1.selectedFolder, "SelectFolder", null, new { @class = "btn btn-default btn-block" })
+</p>
+@*<p>
+    @Html.ActionLink("Select Target Folder: " + (string)ViewBag.Preferences2.selectedFolder, "SelectTargetFolder", null, new { @class = "btn btn-default btn-block" })
+</p>*@
+<p>
+    @Html.ActionLink("Save List into the Database", "GetFileList", null, new { @class = "btn btn-default btn-block" })
+</p>
